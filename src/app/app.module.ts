@@ -1,7 +1,9 @@
+import { DataWorkerService } from './service/data-worker.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from "@angular/http";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -24,6 +26,7 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -47,7 +50,9 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
       },
     ])
   ],
-  providers: [],
+  providers: [
+    DataWorkerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

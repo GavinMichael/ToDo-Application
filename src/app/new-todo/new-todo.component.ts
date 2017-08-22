@@ -1,3 +1,4 @@
+import { DataWorkerService } from './../service/data-worker.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewTodoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: DataWorkerService) { }
 
   ngOnInit() {
   }
 
   submit(form) {
-    console.log(form.value);    
+    console.log(form.value);
+    // add to the active todolist array
+    // post to the server
+    
   }
 }
