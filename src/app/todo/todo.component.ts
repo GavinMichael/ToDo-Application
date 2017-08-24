@@ -18,6 +18,7 @@ export class TodoComponent implements OnInit {
     this.service.fetchAllTodos()
       .subscribe(Response => {
         this.todosArray = Response.json();
+        this.todosArray.reverse();
       },
       Error => {
         console.log(Error);        
@@ -30,6 +31,7 @@ export class TodoComponent implements OnInit {
       }
     )
 
+    // Adding a new todo from new-todo.component
     this.service.newTodoObj
       .subscribe(Response => {
         let newTodoFromNewTodoComponent = Response;
@@ -38,5 +40,19 @@ export class TodoComponent implements OnInit {
         console.log(this.todosArray);        
       })
   } 
+
+  // Deleting a todo
+  deleteTodo(todo) {
+    // get index of the todo being deleted
+    let index = this.todosArray.indexOf(todo);
+    // remove that from the view
+    this.todosArray.splice(index, 1);
+    // Delete http request sent to service
+    let id = todo._id;
+    this.service.deleteTodo(id)
+      .subscribe(Response => {
+        console.log(Response);        
+      })
+  }
 
 }

@@ -15,15 +15,18 @@
       <div class="col-md-4 task-control">
         <span 
           class="glyphicon glyphicon-ok task-control-btn"
-          title="Mark Complete">
+          title="Mark Complete"
+          (click)="completeTodo(todo)">
         </span>
         <span 
           class="glyphicon glyphicon-wrench task-control-btn"
-          title="Edit Task">
+          title="Edit Task"
+          (click)="editTodo(todo)">
         </span>
         <span 
           class="glyphicon glyphicon-remove task-control-btn"
-          title="Delete Task">
+          title="Delete Task"
+          (click)="deleteTodo(todo)">
         </span>
       </div>     
     </div>

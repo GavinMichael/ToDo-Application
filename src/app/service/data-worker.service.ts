@@ -18,8 +18,7 @@ export class DataWorkerService {
 
   // Used by new-todo.component to add a new todo
   // communicates with the todo.component and server
-  addNewTodo(newTodo) {
-    
+  addNewTodo(newTodo) {    
     // Post to server
     this.http.post(this._apiURL, newTodo)
       .subscribe(Response => {
@@ -33,5 +32,10 @@ export class DataWorkerService {
         console.log(Error);
         alert('Failed to add todo');
       }
+  } // end of addNewTodo()
+
+  // Used by todo.component to delete todo from the server
+  deleteTodo(id) {
+    return this.http.delete(this._apiURL + '/' + id);
   }
 }
