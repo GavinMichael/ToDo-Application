@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -27,6 +29,8 @@ import { NewTodoComponent } from './new-todo/new-todo.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     RouterModule.forRoot([
       {
         path: '',

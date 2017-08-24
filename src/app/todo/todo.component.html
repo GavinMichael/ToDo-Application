@@ -1,6 +1,6 @@
 <new-todo></new-todo>
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let todo of todosArray">
+  <li class="list-group-item" *ngFor="let todo of activeTodosArray">
 
     <div class="task-header row" [style.backgroundColor]="todo.label">
       <!-- Priority Label -->

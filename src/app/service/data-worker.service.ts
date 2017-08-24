@@ -34,8 +34,14 @@ export class DataWorkerService {
       }
   } // end of addNewTodo()
 
-  // Used by todo.component to delete todo from the server
+  // Used by todo.component to delete todo from the DB
   deleteTodo(id) {
     return this.http.delete(this._apiURL + '/' + id);
+  }
+
+  // Used by todo.component to update todo in the DB
+  completeTodo(todo) {
+    console.log(todo);    
+    return this.http.put(this._apiURL + '/update/' + todo._id, todo);
   }
 }
