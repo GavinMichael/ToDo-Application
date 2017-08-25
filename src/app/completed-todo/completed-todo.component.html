@@ -1,3 +1,35 @@
-<p>
-  completed-todo works!
-</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let todo of completedTodosArray">
+    <div class="task-header row" [style.backgroundColor]="todo.label">
+      <!-- Priority Label -->
+      <div class="col-md-4">
+        Priority : {{ todo.priority }}
+      </div>
+      <!-- Date Added On Label -->
+      <div class="col-md-4">
+        Added On : {{ todo.addedOn | date:'medium'   }}
+      </div>
+      <!-- Task Control Buttons -->
+      <div class="col-md-4 task-control">
+        <span 
+          class="glyphicon glyphicon glyphicon-repeat task-control-btn"
+          title="Mark Active"
+          (click)="activateTodo(todo)">
+        </span>
+        <span 
+          class="glyphicon glyphicon-remove task-control-btn"
+          title="Delete Task"
+          (click)="deleteTodo(todo)">
+        </span>
+      </div>     
+    </div>
+    <div class="todo-label">Todo Title</div>
+    <h3 class="todo-title">
+      {{ todo.title }}
+    </h3>
+    <div class="todo-label">Todo Description</div>
+    <p class="todo-desc">
+      {{ todo.desc }}
+    </p>
+  </li>
+</ul>

@@ -1,5 +1,5 @@
 import { DataWorkerService } from './../service/data-worker.service';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, Input } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
@@ -79,7 +79,7 @@ export class TodoComponent implements OnInit {
     // push it to the completed todos array
     this.completedTodosArray.push(todo);
     // Update DB record
-    this.service.completeTodo(todo)
+    this.service.updateTodo(todo)
       .subscribe(Response => {
         console.log(Response);  
         // Toast  
