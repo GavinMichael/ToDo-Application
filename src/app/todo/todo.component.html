@@ -1,4 +1,64 @@
-<new-todo></new-todo>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- Modal Title -->
+        <h4 class="modal-title" id="myModalLabel">
+          Edit Todo
+        </h4>
+      </div>
+      <!-- Modal Body -->
+      <form #f="ngForm" (ngSubmit)="editTodoFormSubmit(f)">
+      <div class="modal-body">
+          
+            <div class="todo-label">Todo Title
+              <p>{{ editedTodo.title }}</p>
+            </div>
+            <input type="text" class="form-control" ngModel #title="ngModel" name="title" required>
+            <div class="alert alert-danger" *ngIf="title.errors && title.touched">
+              <div *ngIf="title.errors.required">Title is required</div>
+            </div>
+            <div class="todo-label">Todo Description</div>
+            <textarea id="desc" cols="30" rows="5" ngModel #desc="ngModel" name="desc" class="form-control"></textarea>
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-toggle pull-right">
+  <button 
+    class="btn btn-primary" 
+    #toggleTodoFormBtn 
+    (click)="toggleTodoFrom()" 
+    *ngIf="todoFormHidden">
+    <span class="glyphicon glyphicon-plus"></span>
+    Add a new Todo
+  </button>
+
+  <button 
+    class="btn btn-danger"
+    (click)="toggleTodoFrom()" 
+    *ngIf="!todoFormHidden">
+    <span class="glyphicon glyphicon-remove"></span>
+    Add Later
+  </button>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="todo-form" [hidden]="todoFormHidden" >
+  <new-todo></new-todo>
+</div>
+
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let todo of activeTodosArray">
 
@@ -21,7 +81,9 @@
         <span 
           class="glyphicon glyphicon-wrench task-control-btn"
           title="Edit Task"
-          (click)="editTodo(todo)">
+          data-toggle="modal" 
+          (click)="editTodo(todo)"
+          data-target="#myModal">
         </span>
         <span 
           class="glyphicon glyphicon-remove task-control-btn"
@@ -34,6 +96,5 @@
     <h3 class="todo-title">{{ todo.title }}</h3>
     <div class="todo-label">Todo Description</div>
     <p class="todo-desc">{{ todo.desc }}</p>
-
   </li>
 </ul>

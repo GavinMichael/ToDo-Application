@@ -34,3 +34,7 @@
 .todo-title, .todo-desc {
     margin-top: 5px;
 }
+
+.todo-form {
+    padding: 10px;
+}

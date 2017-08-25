@@ -17,6 +17,10 @@ export class TodoComponent implements OnInit {
   activeTodosArray = [];
   // holds all the completed toods
   completedTodosArray = [];
+  // used to show and hide the add todo form
+  todoFormHidden: boolean = true;
+
+  editedTodo = [];
 
   constructor(
     private service: DataWorkerService,
@@ -109,6 +113,47 @@ export class TodoComponent implements OnInit {
       Error => {
         console.log(Error);  
         this.toastr.error('Error! Failed to delete');      
+      }
+  }
+
+  
+  toggleTodoFrom() {
+    this.todoFormHidden = !this.todoFormHidden;
+  }
+
+  editTodo(todo) {
+    this.editedTodo = todo;
+    // this.service.updateTodo(this.editedTodo)
+    //   .subscribe(Response => {
+    //     this.toastr.success('Updated successfully');   
+    //   }),
+    //   Error => {
+    //     console.log(Error);  
+    //     this.toastr.error('Error! Failed to delete');  
+    //   }
+  }
+
+  // Edit todo form submit
+  editTodoFormSubmit(f) {
+    console.log(f.value);
+    
+    let updatedTodo = this.editedTodo;
+    updatedTodo['title'] = f.value.title;
+    updatedTodo['desc'] = f.value.desc;
+    
+    // find the index of the todo that is being edited
+    let index = this.activeTodosArray.indexOf(this.editedTodo)
+    this.activeTodosArray[index].title = updatedTodo['title'];
+    this.activeTodosArray[index].desc = updatedTodo['desc'];
+
+    this.service.updateTodo(this.activeTodosArray[index])
+      .subscribe(Response => {
+        this.toastr.success('Updated successfully');
+        f.reset();   
+      }),
+      Error => {
+        console.log(Error);  
+        this.toastr.error('Error! Failed to delete');  
       }
   }
 
