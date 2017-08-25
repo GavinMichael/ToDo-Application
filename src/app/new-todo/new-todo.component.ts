@@ -24,6 +24,7 @@ export class NewTodoComponent implements OnInit {
       label: "#b5b5b5",
       status: "Active",
       addedOn: Date(),
+      completedOn: null,
       priority: "Normal"
     };
 
@@ -42,7 +43,7 @@ export class NewTodoComponent implements OnInit {
     } else {
       this.newTodo['priority'] = 'Normal';
     }
-
+    
     // Call the service to handle new todo
     this.service.addNewTodo(this.newTodo);
     

@@ -76,6 +76,7 @@ export class TodoComponent implements OnInit {
     this.activeTodosArray.splice(index, 1);
     // change the status field to Completed
     todo.status = 'Completed';
+    todo.completedOn = Date();
     // push it to the completed todos array
     this.completedTodosArray.push(todo);
     // Update DB record
