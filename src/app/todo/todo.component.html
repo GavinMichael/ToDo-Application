@@ -14,14 +14,14 @@
       <div class="modal-body">
           
             <div class="todo-label">Todo Title
-              <p>Original Title : {{ editedTodo.title }}</p>
+              <p>Original Title : {{ editedTodo?.title }}</p>
             </div>
             <input type="text" class="form-control" ngModel #title="ngModel" name="title" required>
             <div class="alert alert-danger" *ngIf="title.errors && title.touched">
               <div *ngIf="title.errors.required">Title is required</div>
             </div>
             <div class="todo-label">Todo Description
-              <p>Original Description : {{ editedTodo.desc }}</p>
+              <p>Original Description : {{ editedTodo?.desc }}</p>
             </div>
             <textarea id="desc" cols="30" rows="5" ngModel #desc="ngModel" name="desc" class="form-control"></textarea>
             
@@ -31,7 +31,7 @@
               <!-- Priority Select List -->
               <div class="form-group">
                 <div class="todo-label">Todo Priority
-                    <p>Original Priority : {{ editedTodo.priority }}</p>
+                    <p>Original Priority : {{ editedTodo?.priority }}</p>
                 </div>
                 <select class="form-control" id="priority" ngModel name="priority">
                   <option></option>
@@ -47,7 +47,7 @@
               <div class="form-group">
                 <div class="todo-label">Todo Label
                   <p
-                    [style.background]="editedTodo.label"
+                    [style.background]="editedTodo?.label"
                     >|</p>
                 </div>
                 <select class="form-control" id="label" ngModel name="label">

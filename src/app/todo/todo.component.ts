@@ -20,7 +20,15 @@ export class TodoComponent implements OnInit {
   // used to show and hide the add todo form
   todoFormHidden: boolean = true;
 
-  editedTodo = [];
+  editedTodo = {
+    title: null,
+    desc: null,
+    label: null,
+    completedOn: null,
+    status: null,
+    addedOn: null,
+    priority: null
+  };
 
   constructor(
     private service: DataWorkerService,
