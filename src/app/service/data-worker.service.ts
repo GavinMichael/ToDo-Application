@@ -40,8 +40,7 @@ export class DataWorkerService {
   }
 
   // Used by todo.component to update todo in the DB
-  updateTodo(todo) {
-    console.log(todo);    
+  updateTodo(todo) { 
     return this.http.put(this._apiURL + '/update/' + todo._id, todo);
   }
 }

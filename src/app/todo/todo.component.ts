@@ -55,8 +55,7 @@ export class TodoComponent implements OnInit {
       .subscribe(Response => {
         let newTodoFromNewTodoComponent = Response;
         // Insert the new todo into the view
-        this.activeTodosArray.splice(0, 0, newTodoFromNewTodoComponent);
-        console.log(this.activeTodosArray);        
+        this.activeTodosArray.splice(0, 0, newTodoFromNewTodoComponent);        
       })
   } 
 
@@ -86,7 +85,6 @@ export class TodoComponent implements OnInit {
     // Update DB record
     this.service.updateTodo(todo)
       .subscribe(Response => {
-        console.log(Response);  
         // Toast  
         this.toastr.success('Marked as Completed');
       }),
@@ -107,7 +105,6 @@ export class TodoComponent implements OnInit {
     let id = todo._id;
     this.service.deleteTodo(id)
       .subscribe(Response => {
-        console.log(Response);   
         this.toastr.success('Deleted successfully');     
       }),
       Error => {
@@ -127,7 +124,6 @@ export class TodoComponent implements OnInit {
 
   // Edit todo form submit
   editTodoFormSubmit(f) {
-    console.log(f.value);
     
     let updatedTodo = this.editedTodo;
     updatedTodo['title'] = f.value.title;
