@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="editTodoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,19 +14,56 @@
       <div class="modal-body">
           
             <div class="todo-label">Todo Title
-              <p>{{ editedTodo.title }}</p>
+              <p>Original Title : {{ editedTodo.title }}</p>
             </div>
             <input type="text" class="form-control" ngModel #title="ngModel" name="title" required>
             <div class="alert alert-danger" *ngIf="title.errors && title.touched">
               <div *ngIf="title.errors.required">Title is required</div>
             </div>
-            <div class="todo-label">Todo Description</div>
+            <div class="todo-label">Todo Description
+              <p>Original Description : {{ editedTodo.desc }}</p>
+            </div>
             <textarea id="desc" cols="30" rows="5" ngModel #desc="ngModel" name="desc" class="form-control"></textarea>
             
+            <div class="row">
+                
+            <div class="col-sm-6">
+              <!-- Priority Select List -->
+              <div class="form-group">
+                <div class="todo-label">Todo Priority
+                    <p>Original Priority : {{ editedTodo.priority }}</p>
+                </div>
+                <select class="form-control" id="priority" ngModel name="priority">
+                  <option></option>
+                  <option>Low</option>
+                  <option>Normal</option>
+                  <option>High</option>
+                </select>
+              </div>
+            </div>
+        
+            <div class="col-sm-6">
+              <!-- Label Select List -->
+              <div class="form-group">
+                <div class="todo-label">Todo Label
+                  <p
+                    [style.background]="editedTodo.label"
+                    >|</p>
+                </div>
+                <select class="form-control" id="label" ngModel name="label">
+                  <option></option>
+                  <option value="#e53935">Red</option>
+                  <option value="#43a047">Green</option>
+                  <option value="#039be5">Blue</option>
+                </select>
+              </div>
+            </div>
+        
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-        <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Save changes</button>
+        <button type="submit" class="btn btn-primary" [disabled]="f.invalid" id="submitEditTodoForm">Save changes</button>
       </div>
     </form>
     </div>
@@ -83,7 +120,7 @@
           title="Edit Task"
           data-toggle="modal" 
           (click)="editTodo(todo)"
-          data-target="#myModal">
+          data-target="#editTodoModal">
         </span>
         <span 
           class="glyphicon glyphicon-remove task-control-btn"

@@ -123,14 +123,6 @@ export class TodoComponent implements OnInit {
 
   editTodo(todo) {
     this.editedTodo = todo;
-    // this.service.updateTodo(this.editedTodo)
-    //   .subscribe(Response => {
-    //     this.toastr.success('Updated successfully');   
-    //   }),
-    //   Error => {
-    //     console.log(Error);  
-    //     this.toastr.error('Error! Failed to delete');  
-    //   }
   }
 
   // Edit todo form submit
@@ -140,6 +132,8 @@ export class TodoComponent implements OnInit {
     let updatedTodo = this.editedTodo;
     updatedTodo['title'] = f.value.title;
     updatedTodo['desc'] = f.value.desc;
+    updatedTodo['priority'] = f.value.priority;
+    updatedTodo['label'] = f.value.label;
     
     // find the index of the todo that is being edited
     let index = this.activeTodosArray.indexOf(this.editedTodo)

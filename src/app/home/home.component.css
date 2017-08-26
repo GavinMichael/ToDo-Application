@@ -1,0 +1,23 @@
+.stack {
+    height: 100px
+}
+
+.stack-angular {
+    background: url('https://avatars2.githubusercontent.com/u/18171845?v=3&s=400');
+    background-size: cover;
+}
+
+.stack-node {
+    background: url('https://www.echosteg.com/images/blog/standard/nodejs_logo.png');
+    background-size: cover;
+}
+
+.stack-express {
+    background: url('https://coligo.io/images/express.svg');
+    background-size: cover;
+}
+
+.stack-mongo {
+    background: url('https://severalnines.com/sites/default/files/logomongodbonwhite1.png');
+    background-size: cover;
+}
