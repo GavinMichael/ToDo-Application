@@ -1,3 +1,10 @@
-# ToDo-Application
+# Todo List Application
 
-From Vs Code
+Created using 
+
+ * Angular 4
+ * Node JS
+ * Express
+ * MongoDB
+
+### Demo Hosted on [HEROKU](#)
